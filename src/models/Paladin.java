@@ -1,24 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package models;
 
 import java.util.Random;
 
-/**
- *
- * @author eduardo
- */
 public class Paladin extends Personaje {
 
     //probabilidad de guillotina
     static public final int guillotinaProb = 5;
+    public static final int ataquePaladinBase=20;
+
+    public Paladin(String nombre) {
+        super(Personaje.vidaMax, ataquePaladinBase, nombre);
+    }
 
     public Paladin(int pt_vida, int pt_ataque, String nombre) {
         super(pt_vida, pt_ataque, nombre);
     }
+    
+    
 
     @Override
     public void atacar(Personaje objetivo) {

@@ -1,12 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package models;
 
 
 public class Aldeano extends Personaje{
+    public static final int ataqueAldeanoBase=5;
+   
+    public Aldeano(String nombre){
+        super(Personaje.vidaMax, ataqueAldeanoBase, nombre);
+    }
 
     public Aldeano(int pt_vida, int pt_ataque, String nombre) {
         super(pt_vida, pt_ataque, nombre);

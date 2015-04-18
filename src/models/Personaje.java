@@ -4,9 +4,9 @@ public class Personaje {
 
     static public final int vidaMax = 100;
     
-    private int pt_vida;
+    private int pt_vida=vidaMax;
     private int pt_ataque;
-    private String nombre;
+    String nombre;
 
     public Personaje(int pt_vida, int pt_ataque, String nombre) {
         this.pt_vida = pt_vida;
