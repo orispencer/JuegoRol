@@ -1,74 +1,58 @@
-
 package UI;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.Cuenta;
 
 public class Principal extends javax.swing.JFrame {
 
-    public Principal() {
-        
+    private List<Cuenta> cuentas;
+
+    public Principal()  {
+
+        FileOutputStream fos = null;
         initComponents();
         setLocationRelativeTo(null);
         
+        /*
+        cuentas =new ArrayList<>();
+        cuentas.add(new cuenta)
+        
+        try {
+            
+            fos = new FileOutputStream( getClass().getResource(
+                        "/resources/data/cuentas.data").getPath());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(cuentas);
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }*/
+
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jdlogin = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
-        tfUsuario = new javax.swing.JTextPane();
-        btEntrar = new javax.swing.JButton();
         inicio = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tfUsuario = new javax.swing.JTextField();
+        btEntrar = new javax.swing.JButton();
         background = new javax.swing.JLabel();
-
-        jdlogin.setModal(true);
-        jdlogin.setResizable(false);
-
-        jLabel1.setText("Usuario");
-
-        tfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfUsuarioKeyReleased(evt);
-            }
-        });
-
-        btEntrar.setText("Enviar");
-        btEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btEntrarMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jdloginLayout = new javax.swing.GroupLayout(jdlogin.getContentPane());
-        jdlogin.getContentPane().setLayout(jdloginLayout);
-        jdloginLayout.setHorizontalGroup(
-            jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdloginLayout.createSequentialGroup()
-                .addGroup(jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jdloginLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jdloginLayout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btEntrar)))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        jdloginLayout.setVerticalGroup(
-            jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdloginLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(btEntrar)
-                .addGap(45, 45, 45))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Juego de Rol :)");
@@ -82,7 +66,30 @@ public class Principal extends javax.swing.JFrame {
                 inicioMouseClicked(evt);
             }
         });
-        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 100, 100));
+        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 100, 100));
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel1.setText("Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, -1, -1));
+
+        tfUsuario.setBackground(new java.awt.Color(0, 255, 255));
+        tfUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfUsuarioKeyReleased(evt);
+            }
+        });
+        getContentPane().add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 240, -1));
+
+        btEntrar.setBackground(new java.awt.Color(0, 255, 255));
+        btEntrar.setText("Enviar");
+        btEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btEntrarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/background.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -91,19 +98,17 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioMouseClicked
-        this.jdlogin.setLocationRelativeTo(this);
-        this.jdlogin.pack();
-        this.jdlogin.setVisible(true);
+        this.dispose();
+        new Lobby(tfUsuario.getText()).setVisible(true);
     }//GEN-LAST:event_inicioMouseClicked
 
     private void btEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarMouseClicked
         this.dispose();
-        this.jdlogin.dispose();
         new Lobby(tfUsuario.getText()).setVisible(true);
     }//GEN-LAST:event_btEntrarMouseClicked
 
     private void tfUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUsuarioKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btEntrarMouseClicked(null);
         }
     }//GEN-LAST:event_tfUsuarioKeyReleased
@@ -148,7 +153,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btEntrar;
     private javax.swing.JLabel inicio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JDialog jdlogin;
-    private javax.swing.JTextPane tfUsuario;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }
